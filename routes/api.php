@@ -21,8 +21,11 @@ Route::group(['namespace'=>'API'], function(){
   Route::post('auth/login', 'Auth\LoginController@login');
   Route::post('auth/register', 'Auth\LoginController@register');
 
+  Route::middleware('auth:api')->post('profile/{id}', 'UserController@updateInfo');
+
   Route::group(['namespace'=>'Farm', 'prefix' => 'farm', 'middleware'=>'auth:api'], function(){
     Route::get('data/{id}', 'Data\FarmController@getInfo');
+    Route::post('data/{id}', 'Data\FarmController@updateInfo');
     Route::get('data/realization-detail/{id}', 'Data\FarmController@getReliazationdetail');
     Route::get('data/harvest/{id}', 'Data\FarmController@getRealizationharvest');
   });
