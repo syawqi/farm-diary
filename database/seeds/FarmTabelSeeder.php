@@ -33,5 +33,32 @@ class FarmTabelSeeder extends Seeder
           'total' => 8,
           'metode' => 'Pot'
       ]);
+      DB::table('farms-realization-detail')->insert([
+          'farmrealization_id' => 1 ,
+          'week' => 1,
+          'date' => '2017/11/25',
+          'value' => '9'
+      ]);
+      DB::table('farms-realization-detail')->insert([
+          'farmrealization_id' => 1 ,
+          'week' => 2,
+          'date' => '2017/11/2',
+          'value' => '9'
+      ]);
+      DB::table('farms-realization-detail')->insert([
+          'farmrealization_id' => 1 ,
+          'week' => 3,
+          'date' => '2017/12/10',
+          'value' => '8'
+      ]);
+      DB::table('farms-harvest')->insert([
+          'farmrealization_id' => 1 ,
+          'week' => 3,
+          'month' => 'Februari',
+          'years' => '2017',
+          'date' => '2017/12/10',
+          'total' => 10,
+          'unit' => 'Kg'
+      ]);
     }
 }

@@ -25,6 +25,7 @@ class CreateFarmsTable extends Migration
           $table->increments('id');
           $table->integer('farms_id');
           $table->string('name');
+          $table->date('date');
           $table->integer('total');
           $table->string('metode');
           $table->timestamps();
@@ -35,6 +36,26 @@ class CreateFarmsTable extends Migration
           $table->string('name');
           $table->integer('total');
           $table->string('metode');
+          $table->timestamps();
+        });
+        Schema::create('farms-realization-detail', function (Blueprint $table) {
+          $table->increments('id');
+          $table->integer('farmrealization_id');
+          $table->integer('week');
+          $table->date('date');
+          $table->string('value');
+          $table->timestamps();
+        });
+
+        Schema::create('farms-harvest', function (Blueprint $table) {
+          $table->increments('id');
+          $table->integer('farmrealization_id');
+          $table->integer('week');
+          $table->string('month');
+          $table->string('years');
+          $table->date('date');
+          $table->integer('total');
+          $table->string('unit');
           $table->timestamps();
         });
     }
@@ -49,5 +70,7 @@ class CreateFarmsTable extends Migration
       Schema::dropIfExists('farms');
       Schema::dropIfExists('farms-plan');
       Schema::dropIfExists('farms-realization');
+      Schema::dropIfExists('farms-realization-detail');
+      Schema::dropIfExists('farms-harvest');
     }
 }

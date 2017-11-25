@@ -23,5 +23,7 @@ Route::group(['namespace'=>'API'], function(){
 
   Route::group(['namespace'=>'Farm', 'prefix' => 'farm', 'middleware'=>'auth:api'], function(){
     Route::get('data/{id}', 'Data\FarmController@getInfo');
+    Route::get('data/realization-detail/{id}', 'Data\FarmController@getReliazationdetail');
+    Route::get('data/harvest/{id}', 'Data\FarmController@getRealizationharvest');
   });
 });
