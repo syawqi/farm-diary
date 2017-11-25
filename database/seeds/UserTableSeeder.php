@@ -15,9 +15,10 @@ class UserTableSeeder extends Seeder
             'name' => str_random(10),
             'username' => 'administrator',
             'phone' => '085246835247',
-            'email' => str_random(10).'@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('secret'),
-            'rules' => 'super'
+            'rules' => 'super',
+            'api_token' => bcrypt('admin@gmail.com')
         ]);
     }
 }
