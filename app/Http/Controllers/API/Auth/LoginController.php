@@ -15,4 +15,41 @@ class LoginController extends Controller
       $user = $user::find(Auth::user()->id);
       return $user;
     }
+
+    public function register(User $user)
+    {
+      $member = new User;
+
+      $rules = [
+          'name' => 'required',
+          'email' => 'required|email|unique:users',
+          'username' => 'required|unique:users',
+          'password' => 'required|confirmed',
+          'phone' => 'required',
+
+      ];
+      // $table->string('name');
+      // $table->string('email')->unique();
+      // $table->string('username')->unique();
+      // $table->string('phone')->unique();
+      // $table->string('rules');
+      // $table->string('password');
+      // $table->string('api_token');
+      $this->validate(request(), $rules);
+
+      $member->name = request()->name;
+      $member->email = request()->email;
+      $member->username = request()->username;
+      $member->phone = request()->phone;
+      $member->rules = 'user';
+      $member->api_token = bcrypt(request()->email); // pake email
+
+      if(request()['password']){
+          $member->password = bcrypt(request()['password']);
+      }
+
+      $member->save();
+
+      return response()->json(['success'=>'Registrasi Sukses!'],200);
+    }
 }
