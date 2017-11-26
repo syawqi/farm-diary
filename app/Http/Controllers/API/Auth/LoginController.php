@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Models\Farms;
 use Auth;
 class LoginController extends Controller
 {
@@ -49,6 +50,15 @@ class LoginController extends Controller
       }
 
       $member->save();
+
+      $farm =  new Farms;
+
+      $farm->user_id = $member->id;
+      $farm->name = 'farm';
+      $farm->lenght = 0;
+      $farm->wide = 0;
+
+      $farm->save();
 
       return response()->json(['success'=>'Registrasi Sukses!'],200);
     }

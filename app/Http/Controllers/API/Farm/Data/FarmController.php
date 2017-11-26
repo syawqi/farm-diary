@@ -48,4 +48,5 @@ class FarmController extends Controller
       $farmrealizationdetail = Farmrealization::with('farmharvest')->get();
       return $farmrealizationdetail;
     }
+
 }

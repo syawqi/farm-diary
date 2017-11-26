@@ -25,6 +25,7 @@ class FarmTabelSeeder extends Seeder
           'farms_id' => 1,
           'name' => 'tomat',
           'total' => 10,
+          'date'=>'2017/08/12',
           'metode' => 'Pot'
       ]);
       DB::table('farms-realization')->insert([

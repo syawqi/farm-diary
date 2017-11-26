@@ -13,6 +13,11 @@ class Farms extends Model
   }
   public function farmrealization(){
     return $this->hasMany('App\Models\Farmrealization');
-
+  }
+  public function pendapatan(){
+    return $this->hasMany('App\Models\Pendapatan');
+  }
+  public function pengeluaran(){
+    return $this->hasMany('App\Models\Pengeluaran');
   }
 }
